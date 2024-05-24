@@ -1,0 +1,1304 @@
+program 1:
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <math.h>
+int main()
+{
+float A,B,C,root1,root2;
+float realp,imagp,disc;
+printf("enter the value of A,B,C \n");
+scanf("%f %f %f",&A,&B,&C);
+if(A==0 || B==0 || C==0)
+{
+printf("Error: roots cannot be determined\n");
+exit(1);
+}
+else
+{
+disc = B*B - 4.0*A*C;
+if(disc<0)
+{
+printf("Imaginary roots \n");
+realp = -B/(2.0*A);
+imagp =sqrt(abs(disc))/(2.0*A);
+printf("root1= %f +i %f\n",realp,imagp);
+printf("root2= %f -i %f\n",realp,imagp);
+
+}
+
+else if(disc ==0)
+{
+printf("Roots are real and equal\n");
+root1 = -B/(2.0*A);
+root2 = root1;
+printf("root1 = %f \n",root1);
+printf("root2 = %f \n",root2);
+
+}
+else
+{
+printf("roots are real and distinct\n");
+root1 = (-B+sqrt(disc))/(2.0*A);
+root2 = (-B-sqrt(disc))/(2.0*A);
+printf("roots = %f \n",root1);
+printf("root2 = %f \n",root2);
+}
+}
+}
+
+
+program 2:
+#include <stdio.h>
+#include <conio.h>
+int main()
+{
+	int num,temp,digit,rev=0;
+	//clrscr()
+
+	printf("enter an interger\n");
+	scanf("%d",&num);
+	temp=num;
+	while(num>0)
+	{
+		digit= num%10;
+		rev = rev*10+digit;
+		num/=10;
+
+	}
+	printf("given number is = %d \n", temp );
+	printf("its reverse is = %d \n", rev );
+
+	if(temp==rev)
+		printf("number is a polindrome\n");
+	else
+		printf("number is  not a polindrome\n");
+
+}
+
+
+
+program 3:
+#include <stdio.h>
+int main ()
+{
+char name[20];
+float unit, amount, scharge = 0.0;
+//clrscr();
+printf ("Enter your name & unit Consumed(>0):");
+scanf ("%s %f", &name, &unit);
+if (unit <= 200)
+amount = unit * .80;
+else if (unit <= 300)
+amount = (unit - 200) * 0.90 + 160;
+else if (unit > 300)
+amount = (unit - 300) * 1 + 250;
+if (amount > 400)
+scharge = amount * 0.15;
+printf ("\n__________________");
+printf("\nName : %s",name);
+printf("\nUnit Consumed: %f",unit);
+printf ("\n____________\nAmount : %5.2f \nSurcharge : %5.2f", amount, scharge);
+printf ("\n__________________");
+printf ("\nAmount Due : %.2f ", amount + scharge);
+//getch();
+return(0);
+
+}
+
+
+program 4:
+#include <stdio.h>
+int main()
+{
+int n,arr[20],pos,ele,i;
+printf("Enter no of elements\n");
+scanf("%d",&n);
+for(i = 0; i < n; i++)
+{
+scanf("%d",&arr[i]);
+}
+printf("Enter position to insert\n");
+scanf("%d",&pos);
+printf("Enter element  to insert\n");
+scanf("%d",&ele);
+if(pos > n)
+printf("Invalid Input");
+else
+{
+for (i = n -1; i >= pos - 1; i--)
+arr[i+1] = arr[i];
+}
+arr[pos-1] = ele;
+
+printf("Array after insertion is:\n");
+
+for (i = 0; i <= n; i++)
+printf("%d\n", arr[i]);
+
+
+return 0;
+}
+
+
+program 4A:
+
+#include <stdio.h>
+#include <conio.h>
+#include<stdlib.h>
+void insert(int a[]);
+void Delete(int a[]);
+void display(int arr[]);
+int n;
+int main()
+{
+int a[10],i,ch;
+printf("Enter no of elements\n");
+scanf("%d",&n);
+printf("Enter %d elements\n",n);
+for(i = 0; i < n; i++)
+scanf("%d",&a[i]);
+while(1)
+{
+printf("\n menu");
+printf("\n ********************");
+printf("\n 1.insert");
+printf("\n 2.delete");
+printf("\n 3.display");
+printf("\n 4.exit");
+printf("\n enter your choice");
+scanf("%d",&ch);
+switch(ch)
+{
+case 1:insert(a);
+break;
+case 2:Delete(a);
+break;
+case 3:display(a);
+break;
+case 4: exit(0);
+default:printf("\n invalid option");
+break;
+}
+}
+return 0;
+}
+
+
+void insert(int a[])
+{
+	int loc,item,i;
+printf("Enter position to insert\n");
+scanf("%d",&loc);
+if(loc>=n+1)
+printf("Invalid Input");
+else
+printf("Enter element  to insert\n");
+scanf("%d",&item);
+for (i = n -1; i >= loc - 1; i--)
+a[i+1] = a[i];
+a[loc-1] = item;
+n=n+1;
+printf("Array after insertion is:\n");
+display(a);
+}
+
+void Delete(int a[])
+{
+	int loc,item,i;
+  printf("\nInput the position where to delete: ");
+  scanf("%d",&loc);
+	
+  if(loc>=n+1)
+  printf("deletion not possible");
+  for(i=loc-1;i<n-1;i++)
+	    a[i]=a[i+1];
+	    n=n-1;
+   printf("\nThe new list is : ");
+   display(a);
+}
+void display(int a[])
+{
+	int i;
+	for(i=0;i<n;i++)
+	printf("\n%d",a[i]);
+}
+
+
+program 4B:
+#include <stdio.h>
+int main(){
+  int arr1[50],i,pos,n;
+
+       printf("\n\nDelete an element at desired position from an array :\n");
+       printf("---------------------------------------------------------\n");
+
+       printf("Input the size of array : ");
+       scanf("%d", &n);
+       printf("Input %d elements in the array in ascending order:\n",n);
+       for(i=0;i<n;i++)
+	    {
+	      printf("element - %d : ",i);
+	      scanf("%d",&arr1[i]);
+	    }
+
+  printf("\nInput the position where to delete: ");
+  scanf("%d",&pos);
+	    i=pos-1;
+  while(i<n){
+	    arr1[i]=arr1[i+1];
+	    i++;
+  }
+  n--;
+   printf("\nThe new list is : ");
+  for(i=0;i<n;i++)
+	{
+		   printf("  %d",arr1[i]);
+		}
+	    printf("\n\n");
+
+}
+
+program 5:
+#include <stdio.h>
+int main()
+{
+int m,n,p,q,c,d,k,first[10][10],second[10][10],sum,multiply[10][10];
+printf("Enter number of rows and columns of first matrix\n");
+scanf("%d%d", &m, &n);
+printf("Enter number of rows and columns of second matrix\n");
+scanf("%d%d", &p, &q);
+if (n != p)
+{
+printf("The matrices can't be multiplied with each other.\n");
+printf("Error! column of first matrix not equal to row of second.\n\n");
+
+}
+printf("Enter elements of first matrix\n");
+for (c = 0; c < m; c++)
+for (d = 0; d < n; d++)
+scanf("%d", &first[c][d]);
+printf("Enter elements of second matrix\n");
+for (c = 0; c < p; c++)
+for (d = 0; d < q; d++)
+scanf("%d", &second[c][d]);
+for (c = 0; c < m; c++)
+for (d = 0; d < q; d++)
+{
+sum = 0;
+for (k = 0; k < p; k++)
+{
+sum = sum + first[c][k]*second[k][d];
+}
+multiply[c][d] = sum;
+}
+   printf("Product of the matrices:\n");
+    for (c = 0; c < m; c++) 
+	{
+    for (d = 0; d < q; d++)
+    printf("%d\t", multiply[c][d]);
+	printf("\n");
+  }
+}
+
+/**
+1. Include necessary headers
+2. Declare all needed functions
+3. Declare variables inside main function
+4. Get input strings
+5. Call functions and pass required parameters;
+6. Write function body for String Length
+7. Write function body for String Concatenation
+8. Write function body for String Compare
+**/
+program 6:
+#include<stdio.h>
+#include<string.h>
+
+void stringLength(char s1[50], char s2[50]);
+void stringConcatenation(char s1[50], char s2[50]);
+void stringCompare(char s1[50], char s2[50]);
+
+int main(){
+
+    char a[50], b[50];
+
+    printf("Enter the first String:\n");
+    scanf("%s", a);
+    printf("Enter the second String:\n");
+    scanf("%s", b);
+
+    stringLength(a, b);
+    stringCompare(a,b);
+    stringConcatenation(a,b);
+
+    return 0;
+}
+
+void stringLength(char s1[50], char s2[50]) {
+    int len1, len2;
+    len1 = strlen(s1);
+    len2 = strlen(s2);
+
+    printf("\nLength of first string is %d", len1);
+    printf("\nLength of second string is %d", len2);
+}
+
+void stringConcatenation(char s1[50], char s2[50]) {
+    printf("\nConcatenated String is %s", strcat(s1,s2));
+}
+
+void stringCompare(char s1[50], char s2[50]) {
+    if(strcmp(s1,s2) == 0){
+        printf("\nStrings are equal");
+    }else {
+        printf("\nStrings are not equal");
+    }
+}
+
+
+program 7:
+#include<stdio.h>
+#include<conio.h>
+void swap1(int p, int q);
+
+void swap2(int *p,int *q);
+int main()
+{
+	int a,b,c,d;
+	//clrscr();
+	printf("Call by Value");
+	printf("\nEnter value of a  :  ");
+	scanf("%d",&a);
+	printf("Enter value of b  :  ");
+	scanf("%d",&b);
+
+	printf("\n\nBefore swapping the values of a=%d and b=%d",a,b);
+	swap1(a,b);
+	printf("\nAfter swapping the values of a=%d and b=%d",a,b);
+
+	printf("\n\nCall by Reference");
+	printf("\nEnter value of c  :  ");
+	scanf("%d",&c);
+	printf("Enter value of d  :  ");
+	scanf("%d",&d);
+
+	printf("\nBefore swapping the values of c=%d and d=%d",c,d);
+	swap2(&c,&d);
+	printf("\nAfter swapping the values of c=%d and d=%d",c,d);
+	getch();
+	return 0;
+}
+
+void swap1(int p, int q)
+{
+	int temp;
+	temp=p;
+	p=q;
+	q=temp;
+	return;
+}
+
+void swap2(int *p,int *q)
+{
+	int temp;
+	temp=*p;
+	*p=*q;
+	*q=temp;
+	return;
+}
+
+
+program 8:
+#include<stdio.h>
+#include<conio.h>
+int convert(int decimal);
+
+int main()
+{
+	int decimal, binary;
+//	clrscr();
+	printf("Enter a decimal number: ");
+	scanf("%d", &decimal);
+	binary = convert(decimal);
+	printf("The binary equivalent of %d is %d.\n", decimal, binary);
+	getch();
+	return 0;
+}
+
+int convert(int decimal)
+{
+	if (decimal == 0)
+	{
+		return 0;
+	}
+	else
+	{
+		return (decimal % 2 + 10 * convert(decimal / 2));
+	}
+}
+
+
+program 8A:
+#include <stdio.h>
+ 
+int main()
+{
+    int  num, binary_val, decimal_val = 0, base = 1, rem;
+ 
+    printf("Enter a binary number(1s and 0s) \n");
+    scanf("%d", &num); /* maximum five digits */
+    binary_val = num;
+    while (num > 0)
+    {
+        rem = num % 10;
+        decimal_val = decimal_val + rem * base;
+        num = num / 10 ;
+        base = base * 2;
+    }
+    printf("The Binary number is = %d \n", binary_val);
+    printf("Its decimal equivalent is = %d \n", decimal_val);
+}
+
+
+program 9:
+#include<stdio.h>
+struct stud
+{
+int rollno, s1, s2, tot ;
+char name[10] ;
+float avg ;
+} s[10] ;
+float compute( struct stud S[], int n )
+{
+int i;
+float sum=0 ;
+for ( i = 0 ; i < n ; i++ )
+{
+sum = sum + S[i].avg ;
+}
+return (sum/n);
+}
+void display( struct stud s )
+{
+printf("%d \t %s \t\t %d \t %d \t %d \t %.2f \n", s.rollno,s.name,s.s1,s.s2,s.tot,s.avg);
+}
+int main()
+{
+int i, n ;
+float mean;
+printf("Enter the number of students : ") ;
+scanf("%d", &n) ;
+for(i = 0 ; i < n ; i++)
+{
+printf("\nEnter the roll number : ") ;
+scanf("%d", &s[i].rollno) ;
+printf("\nEnter the name : ") ;
+scanf("%s", &s[i].name) ;
+printf("\nEnter the marks in 2 subjects : ") ;
+scanf("%d %d", &s[i].s1, &s[i].s2) ;
+s[i].tot = s[i].s1 + s[i].s2 ;
+s[i].avg = s[i].tot / 2.0 ;
+}
+mean = compute( s,n);
+printf("\nBelow Average Students\n");
+printf("\nRoll No. Name \t\tSub1\t Sub2\t Total\t Average\n\n") ;
+for(i = 0 ; i < n ; i++)
+{
+if( s[i].avg < mean )
+display(s[i]);
+}
+printf("\nAbove Average Students\n");
+printf("\nRoll No. Name \t\tSub1\t Sub2\t Total\t Average\n\n") ;
+for(i = 0 ; i < n ; i++)
+{
+if( s[i].avg >= mean )
+display(s[i]);
+}
+
+}
+
+
+program 10:
+#include<stdio.h>
+#include<math.h>
+int main ()
+{
+float a[20], sum1 = 0, sum2 = 0, mean, var, dev;
+int i, n;
+printf ("enter no of ele\n");
+scanf ("%d", &n);
+printf ("enter array ele\n");
+for (i = 0; i < n; i++)
+{
+scanf ("%f", a + i);
+sum1 = sum1 + *(a + i);
+}
+mean = sum1 / n;
+for (i = 0; i < n; i++)
+{
+sum2 = sum2 + pow ((*(a + i) - mean), 2);
+}
+var = sum2 / n;
+dev = sqrt (var);
+printf ("sum is %f\n", sum1);
+printf ("mean is %f\n", mean);
+printf ("variance is %f\n", var);
+printf ("devn is %f\n", dev);
+return 0;
+}
+
+
+
+
+
+
+program 11:
+#include<stdio.h>
+void create(int a[],int n)
+{
+	int i;
+	printf("Enter the Elements : ");
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+}
+void display(int a[],int n){
+	int i;
+	for(i=0;i<n;i++)
+		printf("%d\t",a[i]);																					
+}
+int LinearSearch(int a[],int key,int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		if(key == a[i])
+			return i;
+	}
+	return -1;
+}
+int BinarySearch(int a[],int key,int n)
+{
+	int l,mid,h;
+	l=0;
+	h = n-1;
+	while(l<=h)
+	{
+		mid = (l+h)/2;
+		if(key == a[mid])
+			return mid;
+		else if(key<a[mid])
+			h = mid-1;
+		else
+			l = mid+1;
+	}
+	return -1;
+}
+int main()
+{
+	int a[20],n,i,j;
+//	display(a,n);
+	int k,key,ch;
+	while(1)
+	{
+		printf("\n");
+		printf("\n1.Linear Search \n2.Binary Serach\nEnter the choice : ");
+		scanf("%d",&ch);
+		if(ch == 1){
+			printf("\n====Linear Search Technique====\n");
+			printf("Enter the Size : ");
+			scanf("%d",&n);
+			create(a,n);
+			printf("Enter the element to serach : ");
+			scanf("%d",&key);
+			printf("Element Found at position : %d \n",LinearSearch(a,key,n));
+			display(a,n);
+		}
+		else if(ch == 2){
+			printf("\n====Binary Search Technique====\n");
+			printf("Enter the Size : ");
+			scanf("%d",&n);
+			create(a,n);
+			printf("Enter the element to serach : ");
+			scanf("%d",&key);
+			k=BinarySearch(a,key,n);
+			if (k!=-1)printf("Element Found at position : %d \n",k);
+			else
+			printf("\nElement not found");
+			display(a,n);
+		}
+		else{
+			break;
+		}
+	}
+	return 0;
+	
+}
+
+
+
+
+
+program 12:
+#include<stdio.h>
+void create(int a[],int n)
+{
+	int i;
+	printf("Enter the Elements : ");
+	for(i=0;i<n;i++)
+		scanf("%d",&a[i]);
+}
+void Insertion(int a[],int n)
+{
+	int i,j,x;
+	for(i=1;i<n;i++)
+	{
+		j=i-1;
+		x = a[i];
+		while(j>-1 && a[j]>x)
+		{
+			a[j+1] = a[j];
+			j--;
+		}
+		a[j+1] = x;
+	}
+}
+void display(int a[],int n){
+	int i;
+	for(i=0;i<n;i++)
+		printf("%d\t",a[i]);
+}
+int main()
+{
+	int a[30],n;
+	printf("Enter the size : ");
+		scanf("%d",&n);
+	create(a,n);
+	Insertion(a,n);
+	display(a,n);
+	return 0;
+}
+
+
+
+
+
+program 13:
+#include<stdio.h>
+#include<conio.h>
+void quicksort(int a[25],int first,int last)
+{
+int i, j, pivot, temp;
+if(first<last)
+{
+ pivot=first;
+ i=first;
+ j=last;
+ while(i<j)
+{
+ while(a[i]<=a[pivot]&&i<last)
+ i++;
+ while(a[j]>a[pivot])
+ j--;
+ if(i<j)
+ {
+ temp=a[i];
+ a[i]=a[j];
+ a[j]=temp;
+ }
+ }
+ temp=a[pivot];
+ a[pivot]=a[j];
+ a[j]=temp;
+ quicksort(a,first,j-1);
+ quicksort(a,j+1,last);
+ }
+}
+int main(){
+ int i, n, a[25];
+
+ printf("Enter the number of elements : ");
+ scanf("%d",&n);
+ printf("Enter %d elements: ", n);
+ for(i=0;i<n;i++)
+ scanf("%d",&a[i]);
+ quicksort(a,0,n-1);
+ printf("\nSorted elements are : ");
+ for(i=0;i<n;i++)
+ printf("%d \t",a[i]);
+ 
+ getch();
+ return 0;
+}
+
+
+
+program 14:
+#include<stdio.h>
+void TOH(int n,char A,char B,char C)
+{
+	if(n>0)
+	{
+		TOH(n-1,A,C,B);
+		printf("Move %c to %c\n",A,C);
+		TOH(n-1,B,A,C);
+	}
+}
+int gcd(int n1, int n2) {
+	if (n2 != 0)
+        return gcd(n2, n1 % n2);
+    else
+        return n1;
+}
+int lcmCalculate(int a, int b)
+{
+	static int m = 0;
+    m += b;
+    if((m % a == 0) && (m % b == 0))
+    {
+        return m;
+    }
+    else
+    {
+        lcmCalculate(a, b);
+    }
+}
+int addNumbers(int n) {
+    if (n != 0)
+        return n + addNumbers(n - 1);
+    else
+        return n;
+}
+int main()
+{
+	int a,b,c,ch;
+	while(1){
+		printf("\n1.LCM \n2.GCD \n3.Sum of number \n4.Tower of hanoi \n5.Exit\n >>");
+		scanf("%d",&ch);
+		if(ch == 1){
+			printf("Enter the value A and B : ");
+			scanf("%d %d",&a,&b);
+			printf("LCM of %d and %d is : %d",a,b,lcmCalculate(a,b));
+		}
+		else if(ch == 2){
+			printf("Enter the value A and B: ");
+			scanf("%d %d",&a,&b);
+			printf("GCD of %d and %d is : %d",a,b,gcd(a,b));
+		}
+		else if(ch == 3){
+			printf("Enter the value of n : ");
+			scanf("%d",&a);
+			printf("Sum of given number %d is : %d",a,addNumbers(a));
+		}
+		else if(ch == 4){
+			printf("Enter the Number of disks : ");
+			scanf("%d",&a);
+			TOH(a,'A','B','C');
+		}
+		else{
+			break;
+		}
+	}
+	return 0;
+}
+
+
+
+
+program 15:
+#include<stdio.h>
+void push(int stack[],int size,int *top,int elem){
+if(*top == size-1)
+{
+printf("Stack is full\n");
+}
+else{
+(*top)++;
+stack[*top] = elem;
+}
+}
+void pop(int stack[],int size,int *top){
+int item;
+if(*top == -1){
+printf("\nStack is empty\n");
+}
+else{
+item = stack[*top];
+(*top)--;
+printf("\n%d has been poped\n",item);
+}
+}
+void display(int stack[],int *top)
+{
+int i;
+if(*top == -1){
+printf("\nStack is empty\n");
+}
+else{
+for (i = *top; i >=0; i--)
+ {
+ printf("%d\n", stack[i]);
+ }
+}
+}
+int main()
+{
+ int size, i, elem,top = -1;
+ int ch;
+ printf("Enter size of stack : ");
+ scanf("%d", &size);
+ int stack[size];
+ while(1){
+ printf("\n1.Push \n2.POP \n3.Display \n4.Exit \n >>");
+ scanf(" %d", &ch);
+ if (ch == 1)
+ {
+ printf("\nEnter element to insert : ");
+ scanf("%d", &elem);
+ push(stack,size,&top,elem);
+ }
+ else if (ch == 2)
+ {
+pop(stack,size,&top);
+ }
+else if (ch == 3){
+display(stack, &top);
+}
+ else
+ {
+ printf("Wrong choice");
+ break;
+ }
+}
+ return 0;
+}
+
+
+
+program 16:
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+int main()
+{
+	char ch,stack[50],infix[50];
+	int i,j,top=0;
+
+	stack[0]='(';
+	printf("\n Infix to postfix expression");
+	printf("\n Enter the infix expression  :  ");
+	gets(infix);
+	fflush(stdin);
+	j=strlen(infix);
+	printf("\n The postfix expression is  :  ");
+	for(i=0;i<j;i++)
+	{
+		ch=infix[i];
+		if(((ch>='0')&&(ch<='9')) ||((ch>='a') && (ch<='z')) ||((ch>='A') &&(ch<='Z')))
+			printf("%c",ch);
+		if(ch=='^')
+		{
+			while(stack[top]=='^')
+				printf("%c",stack[top--]);
+			stack[++top]=ch;
+		}
+		if((ch=='*')||(ch=='/'))
+		{
+			while((stack[top]=='*')||(stack[top]=='/')||(stack[top]=='^'))
+				printf("%c",stack[top--]);
+			stack[++top]=ch;
+		}
+		if((ch=='+')||(ch=='-'))
+		{
+			while((stack[top]=='^')||(stack[top]=='*')||(stack[top]=='/')||(stack[top]=='+')||(stack[top]=='-'))
+			{
+				printf("%c",stack[top--]);
+			}
+			stack[++top]=ch;
+		}
+		if(ch=='(')
+		{
+			stack[++top]=ch;
+		}
+		if (ch==')')
+		{
+			while(stack[top]!='(')
+			{
+				printf("%c",stack[top--]);
+				fflush(stdin);
+			}
+			top--;
+		}
+	}
+	while(stack[top]!='(')
+		printf("%c",stack[top--]);
+	fflush(stdin);
+	getch();
+}
+
+
+
+
+
+program 17:
+#include<stdio.h>
+#include<conio.h>
+#define SIZE 5
+int q[SIZE],r=-1,f=0,cnt=0;
+
+void insert()
+{
+	int num;
+	 if(cnt==SIZE)
+		printf("\n Queue Overflow\n");
+	 else
+	 {
+		printf("\nEnter the number to be inserted: ");
+		scanf("%d",&num);
+		r=(r+1)%SIZE;
+		q[r]=num;
+		cnt++;
+	 }
+}
+
+void del1()
+{
+	if(cnt==0)
+	       printf("\n Queue underflow\n");
+	else
+	{
+	       printf("\nThe deleted number is: %d\n",q[f]);
+	       if(r==f)
+	       {
+			r=-1, f= -1;
+	       }
+		f=(f+1)%SIZE;
+		cnt--;
+	}
+ }
+
+void display()
+{
+	int i;
+	printf("\n\n -------- Queue STATUS --------- ");
+	if(cnt==0)
+		printf("\n Queue is empty\n");
+	else
+	{
+		printf("\nQueue elements  :  ");
+		      for(i=f;i!=r;i=(i+1)%SIZE)
+			       printf("%d \t", q[i]);
+			printf("%d", q[r]);
+		printf("\n rear and front%d%d",r,f);
+	}
+}
+
+int main()
+{
+	int ch=1;
+
+	while(ch)
+	{
+		printf("\n\n           *************Circular Queue Operation ************** \n");
+		printf("\n-------- Menu ---------");
+		printf("\n Enter 1 to insert ");
+		printf("\n Enter 2 to delete ");
+		printf("\n Enter 3 to display ");
+		printf("\n Enter 4 to exit ");
+		printf("\n Enter your choice: ");
+		scanf("%d",&ch);
+		switch(ch)
+		{
+			 case 1 :
+				   insert();
+				   break;
+			 case 2  :
+				    del1();
+				    break;
+			 case 3  :
+				    display();
+				    break;
+			 case 4  :  //exit(0);
+			 default : printf("\nInvalid choice");
+			  
+		 }
+	}
+	getch();
+}
+
+
+
+program 18:
+#include<stdio.h>
+#include<stdlib.h>
+#include<conio.h>
+struct node
+{
+int data;
+struct node *next;
+} *head, *var, *temp, *trav, *var2;
+
+
+void ins_at_beg(int value)
+{
+	var = (struct node *) malloc (sizeof (struct node));
+	var->data = value;
+	if (head == NULL)
+	{
+		head = var;
+		head->next = NULL;
+	}
+	else
+	{
+		var->next = head;
+		head=var;
+	}
+}
+
+
+void ins_at_end(int value)
+{
+	temp=head;
+	var = (struct node *) malloc (sizeof (struct node));
+	var->data = value;
+	if (head == NULL)
+	{
+		head = var;
+		head->next = NULL;
+	}
+	else
+	{
+		while(temp->next != NULL)
+		{
+			temp = temp->next;
+		}
+		temp->next = var;
+		var->next = NULL;
+	}
+}
+
+
+void del_at_beg()
+{
+
+    if(head == NULL)
+    {
+        printf("List is already empty.");
+    }
+    else
+    {
+        temp = head;
+        head = head->next;
+        printf("\nData deleted from the list is %d\n", temp->data);
+        free(temp);
+    }
+}
+
+
+
+void del_at_end()
+{
+	temp = head;
+	while (temp->next != NULL)
+	{
+		var=temp;
+		temp = temp->next;
+	}
+	if (temp == head)
+	{
+		head = NULL;
+		free(temp);
+	}
+	printf("Data deleted from the list is %d", temp->data);
+	var->next = NULL;
+	free(temp);
+}
+
+
+void display()
+{
+	trav = head;
+	if (trav == NULL)
+		printf("List is empty\n");
+	else
+	{
+		printf("Elements in the list \n");
+		printf("\n[head] -> ");
+		while (trav != NULL)
+		{
+			printf("%d -> ", trav->data);
+			trav = trav->next;
+		}
+		printf(" [null]\n");
+		printf("\n");
+	}
+}
+
+int main()
+{
+	int choice, value,data;
+
+
+	head = NULL;
+
+	while(1)
+	{
+		printf("\n1 - Insertion at the beginning\n");
+		printf("2 - Insertion at the end\n");
+		printf("3 - Deletion at the beginning\n");
+		printf("4 - Deletion at the end\n");
+		printf("5 - Display\n");
+ 		printf("6 - Exit\n");
+
+		printf("Enter your choice  :  ");
+		scanf("%d", &choice);
+
+		switch(choice)
+		{
+			case 1:
+					printf("Enter the data to be inserted  :  ");
+					scanf("%d",&data);
+					ins_at_beg(data);
+					break;
+			case 2:
+					printf("Enter the data to be inserted  :  ");
+					scanf("%d",&data);
+					ins_at_end(data);
+					break;
+			case 3 : 	del_at_beg();
+					break;
+			case 4:
+					del_at_end();
+					break;
+
+			case 5:
+					display();
+					break;
+
+			case 6:
+					exit(0);
+	}
+}
+getch();
+return 0;
+}
+
+
+program 19:
+#include<stdlib.h>
+#include <stdio.h>
+struct tnode
+{
+    int data;
+
+    struct tnode *right;
+    struct tnode *left;
+};
+
+struct tnode *CreateBST(struct tnode *, int);
+void Inorder(struct tnode *);
+void Preorder(struct tnode *);
+void Postorder(struct tnode *);
+
+int main()
+{
+    struct tnode *root = NULL;
+    int choice, item, n, i;
+    do
+    {
+        printf("\n\nBinary Search Tree Operations\n");
+        printf("\n1. Creation of BST");
+        printf("\n2. Traverse in Inorder");
+        printf("\n3. Traverse in Preorder");
+        printf("\n4. Traverse in Postorder");
+        printf("\n5. Exit\n");
+        printf("\nEnter Choice : ");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+        case 1:
+            root = NULL;
+            printf("\n\nBST for How Many Nodes ? ");
+            scanf("%d",&n);
+            for(i = 1; i <= n; i++)
+            {
+                printf("\nEnter data for node %d : ", i);
+                scanf("%d",&item);
+                root = CreateBST(root,item);
+            }
+            printf("\nBST with %d nodes is ready to Use!!\n", n);
+            break;
+        case 2:
+            printf("\nBST Traversal in INORDER \n");
+            Inorder(root);
+            break;
+        case 3:
+            printf("\nBST Traversal in PREORDER \n");
+            Preorder(root);
+            break;
+        case 4:
+            printf("\nBST Traversal in POSTORDER \n");
+            Postorder(root);
+            break;
+        case 5:
+            printf("\n\n Terminating \n\n");
+            break;
+        default:
+            printf("\n\nInvalid Option !!! Try Again !! \n\n");
+            break;
+        }
+    } while(choice != 5);
+    return 0;
+}
+
+struct tnode *CreateBST(struct tnode *root, int item)
+{
+    if(root == NULL)
+    {
+        root = (struct tnode *)malloc(sizeof(struct tnode));
+        root->left = root->right = NULL;
+        root->data = item;
+        return root;
+    }
+    else
+    {
+        if(item < root->data )
+            root->left = CreateBST(root->left,item);
+        else if(item > root->data )
+            root->right = CreateBST(root->right,item);
+        else
+            printf(" Duplicate Element !! Not Allowed !!!");
+
+        return(root);
+    }
+}
+
+void Inorder(struct tnode *root)
+{
+    if( root != NULL)
+    {
+        Inorder(root->left);
+        printf(" %d ",root->data);
+        Inorder(root->right);
+    }
+}
+
+void Preorder(struct tnode *root)
+{
+    if( root != NULL)
+    {
+        printf(" %d ",root->data);
+        Preorder(root->left);
+        Preorder(root->right);
+    }
+}
+
+void Postorder(struct tnode *root)
+{
+    if( root != NULL)
+    {
+        Postorder(root->left);
+        Postorder(root->right);
+        printf(" %d ",root->data);
+    }
+}
